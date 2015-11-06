@@ -1,0 +1,87 @@
+.jumbotron{
+    position: relative !important;
+    margin-top: 10% !important;
+    padding: 0px !important;
+    margin: 0 auto;
+    width: 40% !important;
+    height: 60% !important;
+}
+
+.txt{
+    position: absolute;
+    bottom: 0;
+}
+
+.txt-in{
+    width: 100%;
+    background-color:white;
+    border:2px solid #dcdcdc !important;
+    display:inline-block;
+    cursor:pointer;
+    color:white;
+    font-family:'Montserrat', sans-serif;
+    font-size:26px !important;
+    font-weight:bold;
+    padding:17px 59px !important;
+    text-decoration:none;    
+    }
+    
+.txt-in:hover {
+    background-color:rgba(153, 153, 153, 0.27);
+}
+
+.name-text{
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    background-color:white;
+    border:2px solid #dcdcdc !important;
+    display:inline-block;
+    cursor:pointer;
+    color:#ACA8A8;
+    font-family:'Montserrat', sans-serif;
+    font-size:26px !important;
+    font-weight:bold;
+    padding:17px 59px !important;
+    text-align: center;
+    text-decoration:none;    
+}    
+
+.name-text:hover {
+    background-color:rgba(153, 153, 153, 0.27);
+}
+
+.message-holder{
+    display:inline-block;
+    color:#716E6E;
+    font-family: Cardo;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+    padding:17px 59px !important;
+    text-decoration:none;     
+}
+
+.alert{
+    background-color: rgba(197, 74, 74, 0.42) !important;
+    transition: ease-in;
+}
+
+.scroller{
+    width: 100% !important;
+    height: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.clearable{
+    background: url(http://velozmontero.fvi-grad.com/chat/enter.png) no-repeat right -45px center;
+    padding: 3px 60px 3px 4px;     /* Use the same right padding (60) in jQ! */
+    transition: background 0.4s;
+}
+
+.clearable.x  { background-position: right 5px center; } /* (jQ) Show icon */
+.clearable.onX{ cursor: pointer; }              /* (jQ) hover cursor style */
+.clearable::-ms-clear {display: none; width:0; height:0;} /* Remove IE default X */
