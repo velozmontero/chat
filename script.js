@@ -36,7 +36,7 @@ $(document).ready(function(){
     var myDataRef = new Firebase('https://jan6mieiiug.firebaseio-demo.com/');
 
     var msgEntered = 'has entered the chat';
-
+    var msgLeft = 'has left the chat';
     
     //----- Generate Random color not in use yet -------/>
     function generateColor(txt){
@@ -52,12 +52,18 @@ $(document).ready(function(){
       if (e.keyCode == 13) {
         
         var salert= document.getElementById("salert");  
-          
+         
         var name = $('#nameInput').val();
         var text = $('#messageInput').val();
-        myDataRef.push({name: name, text: text});
           
-        $('#messageInput').val('');
+        if (!text) {
+            $('#messageInput').addClass('alert');
+        }
+        else{
+            myDataRef.push({name: name, text: text});
+          
+            $('#messageInput').val('');
+        }  
       }
     });
 
@@ -89,7 +95,7 @@ $(document).ready(function(){
     });
 
     function tog(v){return v?'addClass':'removeClass';} 
-        $(document).on('input', '.clearable', function(){
+        $(document).on('input', '.enter', function(){
 
             $('#nameInput').removeClass('alert');
 
@@ -100,9 +106,34 @@ $(document).ready(function(){
             var name = $('#nameInput').val();
 
             ev.preventDefault();
+            
             $('#access').addClass('hidden');
             $('#granted').removeClass('hidden'); 
             myDataRef.push({name: name, text: msgEntered});
+    });
+    
+    function tog(v){return v?'addClass':'removeClass';} 
+        $(document).on('input', '.send', function(){
+
+            $('#messageInput').removeClass('alert');
+
+            $(this)[tog(this.value)]('y');
+        }).on('mousemove', '.y', function( e ){
+            $(this)[tog(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onY');
+        }).on('touchstart click', '.onY', function( ev ){
+            var name = $('#nameInput').val();
+            var text = $('#messageInput').val();
+            
+            ev.preventDefault();
+            $(this).removeClass('y onY').val('').change();
+            
+            myDataRef.push({name: name, text: text});
+            $('#messageInput').val('');
+    });
+    
+    $( window ).unload(function() {
+      var name = $('#nameInput').val();    
+      return myDataRef.push({name: name, text: msgLeft});
     });
 });
 
