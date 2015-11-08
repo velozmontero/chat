@@ -1,11 +1,37 @@
 $(document).ready(function(){
     
-    $(window).focusout(function(){
-        $('#messagesDiv').change(function(){
-             salert.currentTime=0;
-             salert.play();    
-        });
-    });
+    $('#nameInput').focus();
+    
+    var messagesDiv= document.getElementById("messagesDiv");
+    
+    
+    $(window).on("blur focus", function(e) {
+        var prevType = $(this).data("prevType"); // getting identifier to check by
+        if (prevType != e.type) {   //  reduce double fire issues by checking identifier
+            switch (e.type) {
+                case "blur":
+
+                    $('#messagesDiv').bind('DOMNodeInserted',function(){
+                        console.log("window inactive");
+                        salert.currentTime=0;
+                        salert.play();
+                    }); 
+
+                    break;
+
+                case "focus":
+                    
+                    $('#messagesDiv').unbind('DOMNodeInserted');
+                        
+                    console.log("window active");
+
+                    break;
+            }
+        }
+        $(this).data("prevType", e.type); // reset identifier
+    });                    
+  
+    
     
     var myDataRef = new Firebase('https://jan6mieiiug.firebaseio-demo.com/');
 
