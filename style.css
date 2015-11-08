@@ -1,6 +1,6 @@
 .jumbotron{
     position: relative !important;
-    margin-top: 10% !important;
+    margin-top: 20% !important;
     padding: 0px !important;
     margin: 0 auto;
     width: 40% !important;
@@ -8,11 +8,13 @@
 }
 
 .txt{
+    width: 100%;
     position: absolute;
     bottom: 0;
 }
 
 .txt-in{
+  
     width: 100%;
     background-color:white;
     border:2px solid #dcdcdc !important;
@@ -22,7 +24,7 @@
     font-family:'Montserrat', sans-serif;
     font-size:26px !important;
     font-weight:bold;
-    padding:17px 59px !important;
+    padding:17px 40px !important;
     text-decoration:none;    
     }
     
@@ -51,6 +53,10 @@
     background-color:rgba(153, 153, 153, 0.27);
 }
 
+.entered{
+    color: #07D62B !important;
+}
+
 .message-holder{
     display:inline-block;
     color:#716E6E;
@@ -60,7 +66,7 @@
 	font-variant: normal;
 	font-weight: 500;
 	line-height: 26.4px;
-    padding:17px 59px !important;
+    padding:17px 40px !important;
     text-decoration:none;     
 }
 

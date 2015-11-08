@@ -2,7 +2,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>  
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     
@@ -13,6 +13,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  
+      
   </head>
   <body>
     <div>
@@ -25,7 +28,9 @@
     <div id="granted" name="granted" class="container hidden">
       <div class="jumbotron">
         <div class="chat-container">
+            
           <div class="message-holder scroller" id='messagesDiv'></div>
+            
           <div class="txt">
             <input class="txt-in" type='text' id='messageInput' placeholder='Message...'>  
           </div>    
@@ -33,6 +38,10 @@
       </div>
     </div>
   
+    <audio  controls id="salert" name="salert" class="hidden">
+       <source src="sounds/knock.mp3" type="audio/mp3"></source>
+    </audio>  
+      
     <script src="script.js"></script>
   </body>
 </html>
