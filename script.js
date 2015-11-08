@@ -60,11 +60,8 @@ $(document).ready(function(){
             $('#messageInput').addClass('alert');
         }
         else{
-            
-            $(document).on('input', '.send').removeClass('y onY').val('').change();
-            
             myDataRef.push({name: name, text: text});
-          
+            $('#messageInput').removeClass('y onY').val('').change();
             $('#messageInput').val('');
         }  
       }
