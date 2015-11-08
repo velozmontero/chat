@@ -57,6 +57,7 @@ $(document).ready(function(){
                 $('#access').addClass('hidden');
                 $('#granted').removeClass('hidden'); 
                 myDataRef.push({name: name, text: msgEntered});
+                $('#messageInput').focus();
             }
         }
     });

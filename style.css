@@ -1,6 +1,6 @@
 .jumbotron{
     position: relative !important;
-    margin-top: 20% !important;
+    margin-top: 15% !important;
     padding: 0px !important;
     margin: 0 auto;
     width: 40% !important;
@@ -20,7 +20,7 @@
     border:2px solid #dcdcdc !important;
     display:inline-block;
     cursor:pointer;
-    color:white;
+    color:#ACA8A8;
     font-family:'Montserrat', sans-serif;
     font-size:26px !important;
     font-weight:bold;
