@@ -115,14 +115,14 @@ $(document).ready(function(){
             myDataRef.push({name: name, text: msgEntered});
     });
     
-    function tog(v){return v?'addClass':'removeClass';} 
+    function tog2(v){return v?'addClass':'removeClass';} 
         $(document).on('input', '.send', function(){
 
             $('#messageInput').removeClass('alert');
 
-            $(this)[tog(this.value)]('y');
+            $(this)[tog2(this.value)]('y');
         }).on('mousemove', '.y', function( e ){
-            $(this)[tog(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onY');
+            $(this)[tog2(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onY');
         }).on('touchstart click', '.onY', function( ev ){
             var name = $('#nameInput').val();
             var text = $('#messageInput').val();
