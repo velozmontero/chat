@@ -1,9 +1,14 @@
 $(document).ready(function(){
     
-    $('#nameInput').focus();
+    var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/');
+
+    var msgEntered = 'has entered the chat';
+    var msgLeft = 'has left the chat';
     
     var messagesDiv= document.getElementById("messagesDiv");
     
+    
+    $('#nameInput').focus();
     
     $(window).on("blur focus", function(e) {
         var prevType = $(this).data("prevType"); // getting identifier to check by
@@ -32,20 +37,14 @@ $(document).ready(function(){
     });                    
   
     
-    
-    var myDataRef = new Firebase('https://jan6mieiiug.firebaseio-demo.com/');
-
-    var msgEntered = 'has entered the chat';
-    var msgLeft = 'has left the chat';
-    
     //----- Generate Random color not in use yet -------/>
-    function generateColor(txt){
+    /*function generateColor(txt){
         var a = Math.floor((256-229)*Math.random()) + 230;
         var b = Math.floor((256-229)*Math.random()) + 230;
         var c = Math.floor((256-229)*Math.random()) + 230;
 
         color = "rgb(" + a + "," + b + "," + c + ")";
-    };
+    };*/
 
 
     $('#messageInput').keypress(function (e) {
@@ -108,7 +107,8 @@ $(document).ready(function(){
             ev.preventDefault();
             
             $('#access').addClass('hidden');
-            $('#granted').removeClass('hidden'); 
+            $('#granted').removeClass('hidden');
+            $('#messageInput').focus();
             myDataRef.push({name: name, text: msgEntered});
     });
     
