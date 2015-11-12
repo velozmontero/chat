@@ -55,10 +55,6 @@
     background-color:rgba(153, 153, 153, 0.27);
 }
 
-.entered{
-    color: #07D62B !important;
-}
-
 .message-holder{
     word-wrap: break-word;
     display:inline-block;
@@ -137,5 +133,4 @@
         text-align: center;
         text-decoration:none;    
     }    
-    
 }
