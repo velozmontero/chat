@@ -1,7 +1,7 @@
 $(document).ready(function(){
     
     var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/');
-
+    
     var msgEntered = 'has entered the chat';
     var msgLeft = 'has left the chat';
     
@@ -87,7 +87,7 @@ $(document).ready(function(){
             else{
                 $('#access').addClass('hidden');
                 $('#granted').removeClass('hidden'); 
-                myDataRef.push({name: name, text: msgEntered});
+                myDataRef.push({name: name, text: msgEntered, connected: true});
                 $('#messageInput').focus();
             }
         }
@@ -109,7 +109,7 @@ $(document).ready(function(){
             $('#access').addClass('hidden');
             $('#granted').removeClass('hidden');
             $('#messageInput').focus();
-            myDataRef.push({name: name, text: msgEntered});
+            myDataRef.push({name: name, text: msgEntered, connected: true});
     });
     
     function tog2(v){return v?'addClass':'removeClass';} 
@@ -132,8 +132,10 @@ $(document).ready(function(){
     });
     
     $( window ).unload(function() {
-      var name = $('#nameInput').val();    
+      var name = $('#nameInput').val();
+          
       return myDataRef.push({name: name, text: msgLeft});
     });
+    
 });
 
