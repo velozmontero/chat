@@ -1,25 +1,33 @@
-.jumbotron{
-    border-radius: 0 !important;
-    position: relative !important;
-    margin-top: 15% !important;
-    padding: 0px !important;
-    margin: 0 auto;
-    width: 40% !important;
-    height: 60% !important;
+html,body {
+	margin:0;
+	padding:0;
+	height:100%; /* needed for container min-height */
+	
+	font-family:arial,sans-serif;
+	font-size:small;
+	color:#666;
 }
 
-.txt{
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+.lola-container{
+    background-color: #eee;
+    border-radius: 0;
+    padding: 0px;
+    width: 40%;
+    position:relative; /* needed for footer positioning*/
+	margin:0 auto; /* center, not in IE5 */
+	height:auto !important; /* real browsers */
+	height:100%; /* IE6: treaded as min-height*/
+	min-height:100%; /* real browsers */
 }
 
 .txt-in{
-    position: absolute;
+	height: 10%;
+	width: 100%;
+    bottom: 0;
+    position:absolute;
     width: 100%;
     background-color:white;
     border:2px solid #dcdcdc !important;
-    display:inline-block;
     cursor:pointer;
     color:#ACA8A8;
     font-family:'Montserrat', sans-serif;
@@ -75,8 +83,9 @@
 }
 
 .scroller{
+    position: relative;
     width: 100% !important;
-    height: 85%;
+    height: 90%;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -101,20 +110,13 @@
 .send.onY{ cursor: pointer; }              /* (jQ) hover cursor style */
 .send::-ms-clear {display: none; width:0; height:0;} /* Remove IE default Y */
 
-
-
 @media only screen and (max-width: 700px){
-    .jumbotron{
-        margin-top: 0px !important;
-        position: absolute !important;
-        left: 0;
-        right: 0;
-        width: 100% !important;
-        height: 100% !important;
-    }
-    
-    .container{
-        width: 100% !important;    
+    .lola-container{
+        position: relative !important;
+        background-color: #eee;
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
     }
     
     .name-text{
@@ -134,3 +136,4 @@
         text-decoration:none;    
     }    
 }
+
