@@ -132,9 +132,24 @@ $(document).ready(function(){
     });
     
     $( window ).unload(function() {
-      var name = $('#nameInput').val();
+        var name = $('#nameInput').val();
+        
+        var ref = new Firebase('https://burning-torch-3754.firebaseio.com/');
+        ref.once("value", function(snapshot) {
+            
+            snapshot.forEach(function(childSnapshot) {
+                
+                // key will be "fred" the first time and "barney" the second time
+                var key = childSnapshot.key();
+                console.log(key);    
+                // childData will be the actual contents of the child
+                var childData = childSnapshot.val();
+                console.log(childData);
+       
+            });
+        });    
           
-      return myDataRef.push({name: name, text: msgLeft});
+        return myDataRef.push({name: name, text: msgLeft});
     });
     
 });
