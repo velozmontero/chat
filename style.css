@@ -20,9 +20,13 @@ html,body {
 	min-height:100%; /* real browsers */
 }
 
-.txt-in{
-	height: 10%;
+#nav {
+	height: 65px;
 	width: 100%;
+	background-color:#222;
+}
+
+.txt-in{
     bottom: 0;
     position:absolute;
     width: 100%;
@@ -84,8 +88,8 @@ html,body {
 
 .scroller{
     position: relative;
+	height: 85%;
     width: 100% !important;
-    height: 90%;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -119,6 +123,14 @@ html,body {
         height: 100%;
     }
     
+	.scroller{
+		position: relative;
+		height: 78%;
+		width: 100% !important;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	
     .name-text{
         position: relative;
         top: 45%;
@@ -129,7 +141,7 @@ html,body {
         cursor:pointer;
         color:#ACA8A8;
         font-family:'Montserrat', sans-serif;
-        font-size:26px !important;
+        font-size:24px !important;
         font-weight:bold;
         padding:17px 40px !important;
         text-align: center;

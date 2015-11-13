@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     
     var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/');
