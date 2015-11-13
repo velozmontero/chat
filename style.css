@@ -132,20 +132,8 @@ html,body {
 	}
 	
     .name-text{
-        position: relative;
-        top: 45%;
-        width: 100%;
-        background-color:white;
-        border:2px solid #dcdcdc !important;
-        display:inline-block;
-        cursor:pointer;
-        color:#ACA8A8;
-        font-family:'Montserrat', sans-serif;
-        font-size:24px !important;
-        font-weight:bold;
-        padding:17px 40px !important;
-        text-align: center;
-        text-decoration:none;    
-    }    
+		padding:17px 40px !important;
+		font-size:22px !important;  
+	}    
 }
 
