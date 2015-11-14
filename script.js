@@ -1,14 +1,19 @@
 
 $(document).ready(function(){
     
+    $(".slide-in").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $(this).toggleClass("rotate-180");
+    });
+    
     var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/');
     
     var msgEntered = 'has entered the chat';
     var msgLeft = 'has left the chat';
     
     var messagesDiv= document.getElementById("messagesDiv");
-    
-    
+
     $('#nameInput').focus();
     
     $(window).on("blur focus", function(e) {

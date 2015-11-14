@@ -16,10 +16,8 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
     
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script> 
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
       
   </head>
   <body>
@@ -32,17 +30,52 @@
     
     <div class="lola-container hidden" id="granted" name="granted">  
       <div class="chat-container">
-        <div id="nav" name="nav"></div>
+        <div id="nav" name="nav">
+          <div class="slide-in"></div>
+        </div>
+        <div id="wrapper">
+          <div id="sidebar-wrapper">
+             <ul class="sidebar-nav">
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+                 <li class="sidebar-brand">Contact</li>
+             </ul>
+          </div>
+        </div>  
         <div class="message-holder scroller" id='messagesDiv'></div>
         <input class="txt-in send" type='text' id='messageInput' placeholder='Message...'>
       </div>
     </div>
-   
   
     <audio controls id="salert" name="salert" class="hidden">
        <source src="sounds/knock.mp3" type="audio/mp3"></source>
     </audio>  
-      
+    
+      <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>   
     <script src="script.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script src="html5shiv.js"></script>
   </body>
 </html>

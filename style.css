@@ -18,6 +18,7 @@ html,body {
 	height:auto !important; /* real browsers */
 	height:100%; /* IE6: treaded as min-height*/
 	min-height:100%; /* real browsers */
+	overflow: hidden;
 }
 
 #nav {
@@ -26,7 +27,28 @@ html,body {
 	background-color:#222;
 }
 
+.slide-in{
+	float: right;
+	height: 100%;
+	width: 13%;
+    background: url(slide-in.png) no-repeat right 25px center;
+    padding: 3px 25px 3px 25px;     /* Use the same right padding (60) in jQ! */
+
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.rotate-180 {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}
+
 .txt-in{
+	z-index: 1001;
     bottom: 0;
     position:absolute;
     width: 100%;
@@ -129,6 +151,12 @@ html,body {
 		width: 100% !important;
 		overflow-y: auto;
 		overflow-x: hidden;
+	}
+	
+	.slide-in{	
+		width: 25%;
+		background: url(slide-in.png) no-repeat right 25px center;
+		padding: 3px 25px 3px 25px;     /* Use the same right padding (60) in jQ! */
 	}
 	
     .name-text{
