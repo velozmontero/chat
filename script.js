@@ -16,18 +16,18 @@ $(document).ready(function(){
     
     var userid= num1+num2+num3+num4+num5+num6;
     
-    var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/');
+    var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/users');
     
     var amOnline = new Firebase('https://burning-torch-3754.firebaseio.com/.info/connected');
-    var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + userid);
+    var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + name);
     
     
-    amOnline.on('value', function(snapshot) {
+    /*amOnline.on('value', function(snapshot) {
       if (snapshot.val()) {
         userRef.onDisconnect().remove();
         userRef.set(true);
       }
-    });
+    });*/
     
     
     var msgEntered = 'has entered the chat';
@@ -101,9 +101,16 @@ $(document).ready(function(){
                 $('#nameInput').addClass('alert');
             }
             else{
+                
+                amOnline.on('value', function(snapshot) {
+                    if (snapshot.val()) {
+                        userRef.set(true);
+                    }
+                });
+                
                 $('#access').addClass('hidden');
                 $('#granted').removeClass('hidden'); 
-                myDataRef.push({name: name, text: msgEntered, connected: true});
+                myDataRef.push({name: name, text: msgEntered});
                 $('#messageInput').focus();
             }
         }
@@ -123,9 +130,9 @@ $(document).ready(function(){
             ev.preventDefault();
             
             $('#access').addClass('hidden');
-            $('#granted').removeClass('hidden');
+            $('#granted').removeClass('hidden'); 
             $('#messageInput').focus();
-            myDataRef.push({name: name, text: msgEntered, connected: true});
+            myDataRef.push({name: name, text: msgEntered});
     });
     
     function tog2(v){return v?'addClass':'removeClass';} 
@@ -163,7 +170,13 @@ $(document).ready(function(){
                 console.log(childData);
        
             });
-        });    
+        }); 
+        
+        amOnline.on('value', function(snapshot) {
+          if (snapshot.val()) {
+            userRef.onDisconnect().remove();
+          }
+        });
           
         return myDataRef.push({name: name, text: msgLeft});
     });
