@@ -30,8 +30,8 @@ html,body {
 .slide-in{
 	float: right;
 	height: 100%;
-	width: 13%;
-    background: url(slide-in.png) no-repeat right 25px center;
+	width: 45px;
+    background: url(slide-in.png) no-repeat right center;
     padding: 3px 25px 3px 25px;     /* Use the same right padding (60) in jQ! */
 
 	-webkit-transition: all 0.5s ease;
@@ -154,8 +154,6 @@ html,body {
 	}
 	
 	.slide-in{	
-		width: 25%;
-		background: url(slide-in.png) no-repeat right 25px center;
 		padding: 3px 25px 3px 25px;     /* Use the same right padding (60) in jQ! */
 	}
 	

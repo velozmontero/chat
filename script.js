@@ -7,7 +7,28 @@ $(document).ready(function(){
         $(this).toggleClass("rotate-180");
     });
     
+    var num1= Math.floor (Math.random()*9 + 1).toString();
+    var num2= Math.floor (Math.random()*9 + 1).toString();
+    var num3= Math.floor (Math.random()*9 + 1).toString();
+    var num4= Math.floor (Math.random()*9 + 1).toString();
+    var num5= Math.floor (Math.random()*9 + 1).toString();
+    var num6= Math.floor (Math.random()*9 + 1).toString();
+    
+    var userid= num1+num2+num3+num4+num5+num6;
+    
     var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/');
+    
+    var amOnline = new Firebase('https://burning-torch-3754.firebaseio.com/.info/connected');
+    var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + userid);
+    
+    
+    amOnline.on('value', function(snapshot) {
+      if (snapshot.val()) {
+        userRef.onDisconnect().remove();
+        userRef.set(true);
+      }
+    });
+    
     
     var msgEntered = 'has entered the chat';
     var msgLeft = 'has left the chat';
@@ -41,17 +62,6 @@ $(document).ready(function(){
         }
         $(this).data("prevType", e.type); // reset identifier
     });                    
-  
-    
-    //----- Generate Random color not in use yet -------/>
-    /*function generateColor(txt){
-        var a = Math.floor((256-229)*Math.random()) + 230;
-        var b = Math.floor((256-229)*Math.random()) + 230;
-        var c = Math.floor((256-229)*Math.random()) + 230;
-
-        color = "rgb(" + a + "," + b + "," + c + ")";
-    };*/
-
 
     $('#messageInput').keypress(function (e) {
       if (e.keyCode == 13) {
