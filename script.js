@@ -19,16 +19,27 @@ $(document).ready(function(){
     var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/users');
     
     var amOnline = new Firebase('https://burning-torch-3754.firebaseio.com/.info/connected');
-    var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + name);
-    
-    
+
     /*amOnline.on('value', function(snapshot) {
       if (snapshot.val()) {
         userRef.onDisconnect().remove();
         userRef.set(true);
       }
     });*/
-    
+    var ref = new Firebase('https://burning-torch-3754.firebaseio.com/');
+    ref.once("value", function(snapshot) {
+
+        snapshot.forEach(function(childSnapshot) {
+
+            // key will be "fred" the first time and "barney" the second time
+            var key = childSnapshot.key();
+            console.log(key);    
+            // childData will be the actual contents of the child
+            var childData = childSnapshot.val();
+            console.log(childData);
+
+        });
+    }); 
     
     var msgEntered = 'has entered the chat';
     var msgLeft = 'has left the chat';
@@ -75,7 +86,7 @@ $(document).ready(function(){
             $('#messageInput').addClass('alert');
         }
         else{
-            myDataRef.push({name: name, text: text});
+            myDataRef.push({name: name, text: text, id: userid});
             $('#messageInput').removeClass('y onY').val('').change();
             $('#messageInput').val('');
         }  
@@ -101,7 +112,7 @@ $(document).ready(function(){
                 $('#nameInput').addClass('alert');
             }
             else{
-                
+                var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + name);
                 amOnline.on('value', function(snapshot) {
                     if (snapshot.val()) {
                         userRef.set(true);
@@ -110,7 +121,7 @@ $(document).ready(function(){
                 
                 $('#access').addClass('hidden');
                 $('#granted').removeClass('hidden'); 
-                myDataRef.push({name: name, text: msgEntered});
+                myDataRef.push({name: name, text: msgEntered, id: userid});
                 $('#messageInput').focus();
             }
         }
@@ -129,10 +140,17 @@ $(document).ready(function(){
 
             ev.preventDefault();
             
+            var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + name);
+            amOnline.on('value', function(snapshot) {
+                if (snapshot.val()) {
+                    userRef.set(true);
+                }
+            });
+            
             $('#access').addClass('hidden');
             $('#granted').removeClass('hidden'); 
             $('#messageInput').focus();
-            myDataRef.push({name: name, text: msgEntered});
+            myDataRef.push({name: name, text: msgEntered, id: userid});
     });
     
     function tog2(v){return v?'addClass':'removeClass';} 
@@ -157,28 +175,14 @@ $(document).ready(function(){
     $( window ).unload(function() {
         var name = $('#nameInput').val();
         
-        var ref = new Firebase('https://burning-torch-3754.firebaseio.com/');
-        ref.once("value", function(snapshot) {
-            
-            snapshot.forEach(function(childSnapshot) {
-                
-                // key will be "fred" the first time and "barney" the second time
-                var key = childSnapshot.key();
-                console.log(key);    
-                // childData will be the actual contents of the child
-                var childData = childSnapshot.val();
-                console.log(childData);
-       
-            });
-        }); 
-        
+        var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + name);
         amOnline.on('value', function(snapshot) {
           if (snapshot.val()) {
             userRef.onDisconnect().remove();
           }
         });
           
-        return myDataRef.push({name: name, text: msgLeft});
+        return myDataRef.push({name: name, text: msgLeft, id: userid});
     });
     
 });
