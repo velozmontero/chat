@@ -20,26 +20,46 @@ $(document).ready(function(){
     
     var amOnline = new Firebase('https://burning-torch-3754.firebaseio.com/.info/connected');
     
+    var ref = new Firebase('https://burning-torch-3754.firebaseio.com/presence');
+     
     /*amOnline.on('value', function(snapshot) {
       if (snapshot.val()) {
         userRef.onDisconnect().remove();
         userRef.set(true);
       }
     });*/
-    var ref = new Firebase('https://burning-torch-3754.firebaseio.com/presence');
-    ref.once("value", function(snapshot) {
-
-        snapshot.forEach(function(childSnapshot) {
-
-            // key will be "fred" the first time and "barney" the second time
-            var key = childSnapshot.key();
-            console.log(key);    
-            // childData will be the actual contents of the child
-            var childData = childSnapshot.val();
-            console.log(childData);
-            $('#ppl-connected').append('<li>'+key+'</li>');    
+     
+     
+    function getAllConnected(){
+        ref.once("value", function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+    
+                // key will be "fred" the first time and "barney" the second time
+                var key = childSnapshot.key();
+                console.log(key);    
+                // childData will be the actual contents of the child
+                var childData = childSnapshot.val();
+                console.log(childData);
+                $('#ppl-connected').append('<li>'+key+' '+childData+'</li>');    
+            });
         });
-    }); 
+    }; 
+     
+    // Retrieve new posts as they are added to our database
+    ref.on("child_added", function(snapshot) {
+        $('#ppl-connected').html("");
+        getAllConnected();  
+    });
+    
+    ref.on("child_changed", function(snapshot) {
+        $('#ppl-connected').html("");
+        getAllConnected(); 
+    });
+    
+    ref.on("child_removed", function(snapshot) {
+        $('#ppl-connected').html("");
+        getAllConnected(); 
+    });
     
     var msgEntered = 'has entered the chat';
     var msgLeft = 'has left the chat';
@@ -59,7 +79,7 @@ $(document).ready(function(){
                         salert.currentTime=0;
                         salert.play();
                     }); 
-
+              
                     break;
 
                 case "focus":
@@ -94,13 +114,13 @@ $(document).ready(function(){
     });
 
     myDataRef.on('child_added', function(snapshot) {
-      var message = snapshot.val();
-      displayChatMessage(message.name, message.text);
+        var message = snapshot.val();
+        displayChatMessage(message.name, message.text);
     });
 
     function displayChatMessage(name, text) {    
-      $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-      $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     };
 
     $('#nameInput').keypress(function(e){
@@ -115,7 +135,7 @@ $(document).ready(function(){
                 var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + name);
                 amOnline.on('value', function(snapshot) {
                     if (snapshot.val()) {
-                        userRef.set(true);
+                        userRef.set('★ online');
                     }
                 });
                 
@@ -143,7 +163,7 @@ $(document).ready(function(){
             var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + name);
             amOnline.on('value', function(snapshot) {
                 if (snapshot.val()) {
-                    userRef.set(true);
+                    userRef.set('★ online');
                 }
             });
             

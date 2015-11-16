@@ -61,11 +61,12 @@
 }
 
 .sidebar-nav li {
+    font-size: 24px !important;
     text-indent: 20px;
     line-height: 40px;
 }
 
-.sidebar-nav li a {
+.sidebar-nav li {
     display: block;
     text-decoration: none;
     color: #999999;
@@ -84,7 +85,7 @@
 
 .sidebar-nav > .sidebar-brand {
     height: 40px;
-    font-size: 18px;
+    font-size: 24px !important;
     line-height: 40px;
 }
 
