@@ -19,14 +19,14 @@ $(document).ready(function(){
     var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/users');
     
     var amOnline = new Firebase('https://burning-torch-3754.firebaseio.com/.info/connected');
-
+    
     /*amOnline.on('value', function(snapshot) {
       if (snapshot.val()) {
         userRef.onDisconnect().remove();
         userRef.set(true);
       }
     });*/
-    var ref = new Firebase('https://burning-torch-3754.firebaseio.com/');
+    var ref = new Firebase('https://burning-torch-3754.firebaseio.com/presence');
     ref.once("value", function(snapshot) {
 
         snapshot.forEach(function(childSnapshot) {
@@ -37,7 +37,7 @@ $(document).ready(function(){
             // childData will be the actual contents of the child
             var childData = childSnapshot.val();
             console.log(childData);
-
+            $('#ppl-connected').append('<li>'+key+'</li>');    
         });
     }); 
     
