@@ -21,15 +21,17 @@ $(document).ready(function(){
     var amOnline = new Firebase('https://burning-torch-3754.firebaseio.com/.info/connected');
     
     var ref = new Firebase('https://burning-torch-3754.firebaseio.com/presence');
-     
+    
+    var isTyping= "is typing ...";
+    
+    var isTypingRefInfo= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping');
     /*amOnline.on('value', function(snapshot) {
       if (snapshot.val()) {
         userRef.onDisconnect().remove();
         userRef.set(true);
       }
     });*/
-     
-     
+    
     function getAllConnected(){
         ref.once("value", function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
@@ -95,29 +97,57 @@ $(document).ready(function(){
     });                    
 
     $('#messageInput').keypress(function (e) {
-      if (e.keyCode == 13) {
-        
         var salert= document.getElementById("salert");  
-         
         var name = $('#nameInput').val();
         var text = $('#messageInput').val();
-          
-        if (!text) {
-            $('#messageInput').addClass('alert');
+        
+        if (e.keyCode == 13) {
+            if (!text) {
+                $('#messageInput').addClass('alert');
+            }
+            else{
+                isTypingRefInfo.remove();
+                myDataRef.push({name: name, text: text, id: userid});
+                $('#messageInput').removeClass('y onY').val('').change();
+                $('#messageInput').val('');
+            }  
         }
         else{
-            myDataRef.push({name: name, text: text, id: userid});
-            $('#messageInput').removeClass('y onY').val('').change();
-            $('#messageInput').val('');
-        }  
-      }
+            var isTypingRef= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping/' + name);
+            isTypingRef.set(isTyping); 
+        }
     });
+    
+    isTypingRefInfo.on("child_removed", function(snapshot) {
+        isTypingNow();  
+    });
+    
+    isTypingRefInfo.on('child_added', function(snapshot) {
+        isTypingNow();
+    });
+    
+    function isTypingNow(){
+      
+        var name = $('#nameInput').val();
+        isTypingRefInfo.once("value", function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+    
+                // key will be "fred" the first time and "barney" the second time
+                var key = childSnapshot.key();
+                console.log(key);    
+                // childData will be the actual contents of the child
+                var childData = childSnapshot.val();
+                console.log(childData);
+                $('#messagesDiv').append('<div calss="typingNow">'+key+' '+childData+'</div>');    
+            });
+        });
+    }; 
 
     myDataRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
     });
-
+    
     function displayChatMessage(name, text) {    
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
@@ -149,7 +179,7 @@ $(document).ready(function(){
 
     function tog(v){return v?'addClass':'removeClass';} 
         $(document).on('input', '.enter', function(){
-
+          
             $('#nameInput').removeClass('alert');
 
             $(this)[tog(this.value)]('x');
@@ -173,17 +203,22 @@ $(document).ready(function(){
             myDataRef.push({name: name, text: msgEntered, id: userid});
     });
     
+    //-------------------------------------------------------------------------
+    
     function tog2(v){return v?'addClass':'removeClass';} 
         $(document).on('input', '.send', function(){
-
-            $('#messageInput').removeClass('alert');
-
+          
+            var name = $('#nameInput').val();
+                
+            $('#messageInput').removeClass('alert');     
+       
             $(this)[tog2(this.value)]('y');
         }).on('mousemove', '.y', function( e ){
-            $(this)[tog2(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onY');
+            $(this)[tog2(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onY');    
         }).on('touchstart click', '.onY', function( ev ){
-            var name = $('#nameInput').val();
             var text = $('#messageInput').val();
+            
+            isTypingRefInfo.remove();
             
             ev.preventDefault();
             $(this).removeClass('y onY').val('').change();
@@ -196,14 +231,19 @@ $(document).ready(function(){
         var name = $('#nameInput').val();
         
         var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + name);
-        amOnline.on('value', function(snapshot) {
-          if (snapshot.val()) {
-            userRef.onDisconnect().remove();
-          }
-        });
-          
-        return myDataRef.push({name: name, text: msgLeft, id: userid});
+        
+        if ($('#granted').hasClass('hidden')){
+            //do nothing
+        }
+        else {
+          amOnline.on('value', function(snapshot) {
+            if (snapshot.val()) {
+              userRef.onDisconnect().remove();
+            }
+          });
+          myDataRef.push({name: name, text: msgLeft, id: userid});  
+        }
+        
     });
-    
 });
 
