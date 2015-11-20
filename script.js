@@ -143,14 +143,19 @@ $(document).ready(function(){
                 $('.typing').append('<div calss="typingNow">'+key+' '+childData+'</div>');    
             });
         });
-    }; 
+    };
     
+    
+    //----------------------------------------------------------------------
     $('#messageInput').focus(function(){
         if( $(this).val().length === 0 ){
            $('.typing').html("");
            isTypingNow();
         } 
     });
+    //----------------------------------------------------------------------
+    
+    
     
     myDataRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
@@ -216,8 +221,6 @@ $(document).ready(function(){
     
     function tog2(v){return v?'addClass':'removeClass';} 
         $(document).on('input', '.send', function(){
-          
-            var name = $('#nameInput').val();
                 
             $('#messageInput').removeClass('alert');     
        
@@ -226,6 +229,7 @@ $(document).ready(function(){
             $(this)[tog2(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onY');    
         }).on('touchstart click', '.onY', function( ev ){
             var text = $('#messageInput').val();
+            var name = $('#nameInput').val();
             
             isTypingRefInfo.remove();
             
