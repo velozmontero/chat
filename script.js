@@ -101,7 +101,7 @@ $(document).ready(function(){
         var name = $('#nameInput').val();
         var text = $('#messageInput').val();
         
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
             if (!text) {
                 $('#messageInput').addClass('alert');
             }
@@ -129,11 +129,9 @@ $(document).ready(function(){
     });
     
     function isTypingNow(){
-      
         var name = $('#nameInput').val();
         isTypingRefInfo.once("value", function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
-    
                 // key will be "fred" the first time and "barney" the second time
                 var key = childSnapshot.key();
                 console.log(key);    
@@ -197,6 +195,7 @@ $(document).ready(function(){
             $('#nameInput').removeClass('alert');
             
             $(this)[tog(this.value)]('x');
+            
         }).on('mousemove', '.x', function( e ){
             $(this)[tog(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onX');
         }).on('touchstart click', '.onX', function( ev ){
@@ -219,11 +218,21 @@ $(document).ready(function(){
     
     //-------------------------------------------------------------------------
     
-    function tog2(v){return v?'addClass':'removeClass';} 
+    function tog2(v){return v?'addClass':'removeClass';}
+    
         $(document).on('input', '.send', function(){
-                
-            $('#messageInput').removeClass('alert');     
-       
+          
+            $('#messageInput').removeClass('alert');
+            
+            /*if( $(this).val().length == 0){
+              isTypingRefInfo.remove();
+              $('#messageInput').removeClass('y onY').val('').change();
+              $('#messageInput').val('');
+            }*/
+            var toggy = tog2(this.value);
+            if (toggy=="removeClass") {
+              isTypingRefInfo.remove();
+            }
             $(this)[tog2(this.value)]('y');
         }).on('mousemove', '.y', function( e ){
             $(this)[tog2(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onY');    
