@@ -138,23 +138,12 @@ $(document).ready(function(){
                 // childData will be the actual contents of the child
                 var childData = childSnapshot.val();
                 console.log(childData);
-                $('.typing').append('<div calss="typingNow">'+key+' '+childData+'</div>');    
+                $('.typing').append('<div calss="typing">'+key+' '+childData+'</div>');    
             });
         });
     };
     
-    
-    //----------------------------------------------------------------------
-    $('#messageInput').focus(function(){
-        if( $(this).val().length === 0 ){
-           $('.typing').html("");
-           isTypingNow();
-        } 
-    });
-    //----------------------------------------------------------------------
-    
-    
-    
+
     myDataRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
@@ -229,10 +218,12 @@ $(document).ready(function(){
               $('#messageInput').removeClass('y onY').val('').change();
               $('#messageInput').val('');
             }*/
+            
             var toggy = tog2(this.value);
             if (toggy=="removeClass") {
               isTypingRefInfo.remove();
             }
+            
             $(this)[tog2(this.value)]('y');
         }).on('mousemove', '.y', function( e ){
             $(this)[tog2(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onY');    

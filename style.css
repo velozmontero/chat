@@ -85,23 +85,6 @@ html,body {
     background-color:rgba(153, 153, 153, 0.27);
 }
 
-.typing{
-	padding-left: 30px;
-	word-wrap: break-word;
-	color:#716E6E;
-    font-family: Cardo;
-	font-size: 24px;
-	font-style: normal;
-	font-variant: normal;
-	bottom: 60px;
-	float: left;
-	z-index: 1002;
-	display:inline-block;
-	position: absolute;
-	height: 50px;
-	width: 100%;
-}
-
 .message-holder{
     word-wrap: break-word;
     display:inline-block;
