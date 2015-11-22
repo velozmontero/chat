@@ -138,7 +138,7 @@ $(document).ready(function(){
                 // childData will be the actual contents of the child
                 var childData = childSnapshot.val();
                 console.log(childData);
-                $('.typing').append('<div calss="typing">'+key+' '+childData+'</div>');    
+                $('.typing').append('<div calss="typingNow">'+key+' '+childData+'</div>');    
             });
         });
     };
