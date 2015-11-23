@@ -24,7 +24,8 @@ $(document).ready(function(){
     
     var isTyping= "is typing ...";
     
-    var isTypingRefInfo= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping');
+    var isTypingRefInfo= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping/');
+    
     /*amOnline.on('value', function(snapshot) {
       if (snapshot.val()) {
         userRef.onDisconnect().remove();
@@ -106,15 +107,10 @@ $(document).ready(function(){
                 $('#messageInput').addClass('alert');
             }
             else{
-                isTypingRefInfo.remove();
                 myDataRef.push({name: name, text: text, id: userid});
                 $('#messageInput').removeClass('y onY').val('').change();
                 $('#messageInput').val('');
             }  
-        }
-        else{
-            var isTypingRef= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping/' + name);
-            isTypingRef.set(isTyping); 
         }
     });
     
@@ -130,15 +126,16 @@ $(document).ready(function(){
     
     function isTypingNow(){
         var name = $('#nameInput').val();
+        isTypingRefInfo= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping/');
         isTypingRefInfo.once("value", function(snapshot) {
+                
             snapshot.forEach(function(childSnapshot) {
-                // key will be "fred" the first time and "barney" the second time
-                var key = childSnapshot.key();
-                console.log(key);    
-                // childData will be the actual contents of the child
-                var childData = childSnapshot.val();
-                console.log(childData);
-                $('.typing').append('<div calss="typingNow">'+key+' '+childData+'</div>');    
+                childSnapshot.forEach(function(childSnapshot) {
+                    var key = childSnapshot.key();
+                    var idSnapshot= childSnapshot.val();
+                    
+                    $('.typing').append('<div calss="typingNow">'+key+' '+idSnapshot+'</div>');
+                });
             });
         });
     };
@@ -220,8 +217,14 @@ $(document).ready(function(){
             }*/
             
             var toggy = tog2(this.value);
-            if (toggy=="removeClass") {
-              isTypingRefInfo.remove();
+            var name = $('#nameInput').val();
+            isTypingRefInfo= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping/' + userid+ '/' + name);
+            if (toggy=="addClass") {
+                var name = $('#nameInput').val();
+                isTypingRefInfo.set(isTyping); 
+            }
+            else if (toggy=="removeClass") {
+                isTypingRefInfo.remove();
             }
             
             $(this)[tog2(this.value)]('y');
