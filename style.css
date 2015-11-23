@@ -85,6 +85,13 @@ html,body {
     background-color:rgba(153, 153, 153, 0.27);
 }
 
+.typing{
+	background: url(typing.gif) no-repeat right;
+	/*background-size: 20px 10px;
+	background-position: bottom;*/
+	color: #5CB85C;
+}
+
 .message-holder{
     word-wrap: break-word;
     display:inline-block;

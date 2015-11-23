@@ -22,7 +22,7 @@ $(document).ready(function(){
     
     var ref = new Firebase('https://burning-torch-3754.firebaseio.com/presence');
     
-    var isTyping= "is typing ...";
+    var isTyping= "is typing ";
     
     var isTypingRefInfo= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping/');
     
@@ -107,6 +107,8 @@ $(document).ready(function(){
                 $('#messageInput').addClass('alert');
             }
             else{
+                isTypingRefInfo.remove();
+                
                 myDataRef.push({name: name, text: text, id: userid});
                 $('#messageInput').removeClass('y onY').val('').change();
                 $('#messageInput').val('');
@@ -116,7 +118,7 @@ $(document).ready(function(){
     
     isTypingRefInfo.on("child_removed", function(snapshot) {
         $('.typing').html("");
-        isTypingNow();  
+        isTypingNow();
     });
     
     isTypingRefInfo.on('child_added', function(snapshot) {
@@ -134,10 +136,12 @@ $(document).ready(function(){
                     var key = childSnapshot.key();
                     var idSnapshot= childSnapshot.val();
                     
-                    $('.typing').append('<div calss="typingNow">'+key+' '+idSnapshot+'</div>');
+                    $('.typing').append('<div calss="typingNow"><i>'+key+' '+idSnapshot+'</i></div>');
                 });
             });
         });
+        
+        $('#message-holder')[0].scrollTop = $('#message-holder')[0].scrollHeight;
     };
     
 
@@ -148,7 +152,7 @@ $(document).ready(function(){
     
     function displayChatMessage(name, text) {    
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+        $('#message-holder')[0].scrollTop = $('#message-holder')[0].scrollHeight;
     };
 
     $('#nameInput').keypress(function(e){
@@ -221,7 +225,7 @@ $(document).ready(function(){
             isTypingRefInfo= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping/' + userid+ '/' + name);
             if (toggy=="addClass") {
                 var name = $('#nameInput').val();
-                isTypingRefInfo.set(isTyping); 
+                isTypingRefInfo.set(isTyping);
             }
             else if (toggy=="removeClass") {
                 isTypingRefInfo.remove();
