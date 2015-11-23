@@ -107,6 +107,7 @@ $(document).ready(function(){
                 $('#messageInput').addClass('alert');
             }
             else{
+                isTypingRefInfo= new Firebase('https://burning-torch-3754.firebaseio.com/nowtyping/' + userid);
                 isTypingRefInfo.remove();
                 
                 myDataRef.push({name: name, text: text, id: userid});
