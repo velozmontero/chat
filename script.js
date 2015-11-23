@@ -15,7 +15,7 @@ $(document).ready(function(){
     var num6= Math.floor (Math.random()*9 + 1).toString();
     
     var msgEntered = 'has entered the chat';
-    var msgLeft = 'has left the chat';
+    var msgLeft = '<span style="color: #D9534F">'+'has left the chat'+'</span>';
     
     var messagesDiv= document.getElementById("messagesDiv");
     
@@ -152,7 +152,7 @@ $(document).ready(function(){
     });
     
     function displayChatMessage(name, text) {    
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('<div/>').html(text).prepend($('<em/>').html(name+': ')).appendTo($('#messagesDiv'));
         $('#message-holder')[0].scrollTop = $('#message-holder')[0].scrollHeight;
     };
 
