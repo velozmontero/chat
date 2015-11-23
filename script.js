@@ -14,7 +14,7 @@ $(document).ready(function(){
     var num5= Math.floor (Math.random()*9 + 1).toString();
     var num6= Math.floor (Math.random()*9 + 1).toString();
     
-    var msgEntered = 'has entered the chat';
+    var msgEntered = '<span style="color: #4A9CDE">'+'has entered the chat'+'</span>';
     var msgLeft = '<span style="color: #D9534F">'+'has left the chat'+'</span>';
     
     var messagesDiv= document.getElementById("messagesDiv");
