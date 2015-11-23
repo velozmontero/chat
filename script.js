@@ -14,6 +14,11 @@ $(document).ready(function(){
     var num5= Math.floor (Math.random()*9 + 1).toString();
     var num6= Math.floor (Math.random()*9 + 1).toString();
     
+    var msgEntered = 'has entered the chat';
+    var msgLeft = 'has left the chat';
+    
+    var messagesDiv= document.getElementById("messagesDiv");
+    
     var userid= num1+num2+num3+num4+num5+num6;
     
     var myDataRef = new Firebase('https://burning-torch-3754.firebaseio.com/users');
@@ -63,11 +68,6 @@ $(document).ready(function(){
         $('#ppl-connected').html("");
         getAllConnected(); 
     });
-    
-    var msgEntered = 'has entered the chat';
-    var msgLeft = 'has left the chat';
-    
-    var messagesDiv= document.getElementById("messagesDiv");
 
     $('#nameInput').focus();
     
@@ -135,7 +135,7 @@ $(document).ready(function(){
             snapshot.forEach(function(childSnapshot) {
                 childSnapshot.forEach(function(childSnapshot) {
                     var key = childSnapshot.key();
-                    var idSnapshot= childSnapshot.val();
+                    var idSnapshot= childSnapshot.val(); 
                     
                     $('.typing').append('<div calss="typingNow"><i>'+key+' '+idSnapshot+' <img src="typing.gif"></i></div>');
                 });
