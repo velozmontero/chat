@@ -1,17 +1,25 @@
 
 $(document).ready(function(){
   
-    var windowHeight= window.innerHeight;
-    
-    var mInput= $('#myinputmsg').height();
-    
-    var nav= $('#nav').height();
-
-    var mHeight= windowHeight-mInput-nav;
+    resizeChat();
+  
+    $( window ).resize(function(){
+        resizeChat();  
+    });
+  
+    function resizeChat() {
+        var windowHeight= window.innerHeight;
+      
+        var mInput= $('#myinputmsg').height();
         
-    $('#message-holder').css('height', mHeight);
+        var nav= $('#nav').height();
     
-    $('#sidebar-wrapper').css('height', mHeight);
+        var mHeight= windowHeight-mInput-nav;
+            
+        $('#message-holder').css('height', mHeight);
+        
+        $('#sidebar-wrapper').css('height', mHeight);
+    }
     
     $(".slide-in").click(function(e) {
         e.preventDefault();
