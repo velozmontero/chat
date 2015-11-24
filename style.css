@@ -4,6 +4,10 @@ html,body {
 	height:100%; /* needed for container min-height */
 }
 
+#myinputmsg{
+	height: 75px;
+}
+
 .lola-container{
     background-color: #eee;
     border-radius: 0;
@@ -90,6 +94,10 @@ html,body {
 }
 
 .message-holder{
+	position: relative;
+    width: 100% !important;
+    overflow-y: auto;
+    overflow-x: hidden;
     word-wrap: break-word;
     display:inline-block;
     color:#716E6E;
@@ -106,14 +114,6 @@ html,body {
 .alert{
     background-color: rgba(197, 74, 74, 0.42) !important;
     transition: ease-in;
-}
-
-.scroller{
-    position: relative;
-	height: 85%;
-    width: 100% !important;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .enter{
@@ -147,7 +147,7 @@ html,body {
     
 	.scroller{
 		position: relative;
-		height: 78%;
+		
 		width: 100% !important;
 		overflow-y: auto;
 		overflow-x: hidden;

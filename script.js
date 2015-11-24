@@ -1,5 +1,15 @@
 
 $(document).ready(function(){
+  
+    var windowHeight= window.innerHeight;
+    
+    var mInput= $('#myinputmsg').height();
+    
+    var nav= $('#nav').height();
+
+    var mHeight= windowHeight-mInput-nav;
+        
+    $('#message-holder').css('height', mHeight);
     
     $(".slide-in").click(function(e) {
         e.preventDefault();
