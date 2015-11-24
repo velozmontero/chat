@@ -11,11 +11,15 @@ $(document).ready(function(){
         
     $('#message-holder').css('height', mHeight);
     
+    $('#sidebar-wrapper').css('height', mHeight);
+    
     $(".slide-in").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
         $(this).toggleClass("rotate-180");
     });
+    
+    
     
     var num1= Math.floor (Math.random()*9 + 1).toString();
     var num2= Math.floor (Math.random()*9 + 1).toString();

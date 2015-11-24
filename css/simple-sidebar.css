@@ -24,7 +24,6 @@
     position: absolute;
     right: 0;
     width: 40%;
-    height: 78%;
     margin-right: -40%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -117,7 +116,6 @@
     }
 
     #sidebar-wrapper {
-        height: 85%;
         width: 40%;
     }
 
