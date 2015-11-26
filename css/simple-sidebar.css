@@ -69,9 +69,10 @@
 }
 
 .sidebar-nav li {
+    cursor: pointer;
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: white;
 }
 
 .sidebar-nav li:hover {

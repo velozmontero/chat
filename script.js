@@ -270,7 +270,7 @@ $(document).ready(function(){
             $('#messageInput').val('');
     });
     
-    $( window ).unload(function() {
+    $(window).on('beforeunload ',function() {
         var name = $('#nameInput').val();
         
         var userRef = new Firebase('https://burning-torch-3754.firebaseio.com/presence/' + name);
