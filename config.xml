@@ -1,0 +1,67 @@
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" 
+        id="com.swolebrain.lactationtracker" version="1.0.4">
+  <name>Newborn Breastfeeding Tracker</name>
+  <description>Application to keep track of your baby's breast feeding.</description>
+  <author href="http://www.swolebrain.com" email="thecodingteacher@gmail.com">Swolebrain</author>
+  <content src="index.html"/>
+  <!--<preference name="DisallowOverscroll" value="true"/>
+  <preference name="android-minSdkVersion" value="14"/>
+  <plugin name="cordova-plugin-battery-status" source="npm"/>
+  <plugin name="cordova-plugin-camera" source="npm"/>
+  <plugin name="cordova-plugin-media-capture" source="npm"/>
+  <plugin name="cordova-plugin-console" source="npm"/>
+  <plugin name="cordova-plugin-contacts" source="npm"/>
+  <plugin name="cordova-plugin-device" source="npm"/>
+  <plugin name="cordova-plugin-device-motion" source="npm"/>
+  <plugin name="cordova-plugin-device-orientation" source="npm"/>
+  <plugin name="cordova-plugin-dialogs" source="npm"/>
+  <plugin name="cordova-plugin-file" source="npm"/>
+  <plugin name="cordova-plugin-file-transfer" source="npm"/>
+  <plugin name="cordova-plugin-geolocation" source="npm"/>
+  <plugin name="cordova-plugin-globalization" source="npm"/>-->
+  <plugin name="cordova-plugin-inappbrowser" source="npm"/>
+  <plugin name="cordova-plugin-media" source="npm"/>
+  <!--<plugin name="cordova-plugin-network-information" source="npm"/>-->
+  <plugin name="cordova-plugin-splashscreen" source="npm"/>
+  <plugin name="cordova-plugin-statusbar" source="npm"/>
+  <plugin name="cordova-plugin-vibration" source="npm"/>
+  <plugin name="cordova-plugin-whitelist" source="npm"/>-->
+  <icon src="icon.png"/>
+  <platform name="android">
+    <icon src="res/icon/android/drawable-ldpi-icon.png" density="ldpi"/>
+    <icon src="res/icon/android/drawable-mdpi-icon.png" density="mdpi"/>
+    <icon src="res/icon/android/drawable-hdpi-icon.png" density="hdpi"/>
+    <icon src="res/icon/android/drawable-xhdpi-icon.png" density="xhdpi"/>
+    <icon src="res/icon/android/drawable-xxhdpi-icon.png" density="xxhdpi"/>
+    <icon src="res/icon/android/drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
+    <!--<splash src="res/screen/android/drawable-land-ldpi-screen.png" density="land-ldpi"/>
+    <splash src="res/screen/android/drawable-land-mdpi-screen.png" density="land-mdpi"/>
+    <splash src="res/screen/android/drawable-land-hdpi-screen.png" density="land-hdpi"/>
+    <splash src="res/screen/android/drawable-land-xhdpi-screen.png" density="land-xhdpi"/>
+    <splash src="res/screen/android/drawable-land-xxhdpi-screen.png" density="land-xxhdpi"/>
+    <splash src="res/screen/android/drawable-land-xxxhdpi-screen.png" density="land-xxxhdpi"/>
+    <splash src="res/screen/android/drawable-port-ldpi-screen.png" density="port-ldpi"/>
+    <splash src="res/screen/android/drawable-port-mdpi-screen.png" density="port-mdpi"/>
+    <splash src="res/screen/android/drawable-port-hdpi-screen.png" density="port-hdpi"/> -->
+    <splash src="res/screen/android/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
+    <!--<splash src="res/screen/android/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
+    <splash src="res/screen/android/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>-->
+  </platform>
+  <platform name="wp8">
+    <icon src="res/icon/wp8/ApplicationIcon.png" platform="wp8" width="99" height="99"/>
+    <icon src="res/icon/wp8/Background.png" platform="wp8" width="159" height="159"/>
+    <splash src="res/screen/wp8/screen-portrait.jpg" platform="wp8" width="768" height="1280"/>
+  </platform>
+  <access origin="*"/>
+  <allow-intent href="http://*/*"/>
+  <allow-intent href="https://*/*"/>
+  <allow-intent href="tel:*"/>
+  <allow-intent href="sms:*"/>
+  <allow-intent href="mailto:*"/>
+  <allow-intent href="geo:*"/>
+  <platform name="android">
+    <allow-intent href="*.firebaseio.com" />
+    <allow-intent href="auth.firebase.com" />
+    <allow-intent href="market:*"/>
+  </platform>
+</widget>
