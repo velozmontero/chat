@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
   
     resizeChat();
@@ -161,7 +160,7 @@ $(document).ready(function(){
                     var key = childSnapshot.key();
                     var idSnapshot= childSnapshot.val(); 
                     
-                    $('.typing').append('<div calss="typingNow"><i>'+key+' '+idSnapshot+' <img src="typing.gif"></i></div>');
+                    $('.typing').append('<div calss="typingNow"><i>'+key+' '+idSnapshot+'></i></div>');
                 });
             });
         });
