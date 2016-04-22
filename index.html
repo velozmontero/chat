@@ -1,63 +1,91 @@
+<!DOCTYPE HTML>
+<!--
+	Eventually by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-  <head>
-    <title>Chat</title>
-    
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-    
-    <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-      
-  </head>
-  <body>
-  
-    <div class="lola-container" id="access" name="access">
-      <div id="ncont" name="ncont">
-        <input class="name-text enter" type='text' id='nameInput' placeholder='Enter Name To Access'>
-      </div>
-    </div>    
-    
-    <div class="lola-container hidden" id="granted" name="granted">  
-        <div id="nav" name="nav">
-          <div class="slide-in"></div>
+	<head>
+		<title>HI THERE! Chat</title>
+		<meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        
+	</head>
+	<body>
+		<!-- Header -->
+        <div id="access" name="access" class="container-fluid">
+            <header id="header">
+                <div class="image" id="smily-face"></div>
+				<h1 class="hi">Hi, there!</h1>
+			</header>
+            <div id="enterDiv">
+              <div id="ncont" name="ncont">
+                <input class="name-text enter" type='text' id='nameInput' placeholder='Please Enter Name'>
+              </div>
+            </div> 
         </div>
-        <div id="wrapper">
-          <div id="sidebar-wrapper">
-             <ul id="ppl-connected" class="sidebar-nav">
-                <!---People Connected are placed here---> 
-             </ul>
-          </div>
-        </div>  
-        <div class="message-holder" id="message-holder">
-             <div id='messagesDiv'></div>
-             <div class="typing"></div>
-        </div>
-        <div id="myinputmsg">
-          <input class="txt-in send" type='text' id='messageInput' placeholder='Message...'>  
-        </div>
-    </div>
-  
-    <audio controls id="salert" name="salert" class="hidden">
-       <source src="sounds/knock.mp3" type="audio/mp3"></source>
-    </audio>  
-    
-      <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-    <script src='js/firebase.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>   
-    <script src="script.js"></script>
-    <script src="js/respond.min.js"></script>
-    <script src="html5shiv.js"></script>
-  </body>
+			
+        <div class="container-fluid hidden col-lg-4 col-xs-12" id="granted" name="granted">  
+            <div id="nav" name="nav">
+              <div class="slide-in"></div>
+            </div>
+            <div id="wrapper">
+              <div id="sidebar-wrapper">
+                 <ul id="ppl-connected" class="sidebar-nav">
+                    <!---People Connected are placed here---> 
+                 </ul>
+              </div>
+            </div>  
+            <div class="message-holder" id="message-holder">
+                 <div id='messagesDiv'></div>
+                 <div class="typing"></div>
+            </div>
+            <div id="myinputmsg">
+              <input class="txt-in send" type='text' id='messageInput' placeholder='Message...'>  
+            </div>
+       </div>
+
+    <!-- Footer -->
+<!--
+        <footer id="footer">
+            <ul class="icons">
+                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </footer>
+-->
+
+        <audio controls id="salert" name="salert" class="hidden">
+            <source src="sounds/knock.mp3" type="audio/mp3"></source>
+        </audio> 
+
+    <!-- Scripts -->
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+        <script src='js/firebase.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>   
+        <script src="js/respond.min.js"></script>
+        <script src="js/html5shiv.js"></script>
+        <script src="script.js"></script>
+
+	</body>
 </html>

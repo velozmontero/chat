@@ -13,7 +13,9 @@ $(document).ready(function(){
         var mInput= $('#myinputmsg').height();
         
         var nav= $('#nav').height();
-    
+        
+        var smilyFace= $('#smily-face').height();
+  
         var mHeight= windowHeight-mInput-nav;
             
         $('#message-holder').css('height', mHeight);
@@ -210,7 +212,7 @@ $(document).ready(function(){
             $(this)[tog(this.value)]('x');
             
         }).on('mousemove', '.x', function( e ){
-            $(this)[tog(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onX');
+            $(this)[tog(this.offsetWidth-80 < e.clientX-this.getBoundingClientRect().left)]('onX');
         }).on('touchstart click', '.onX', function( ev ){
             var name = $('#nameInput').val();
 
@@ -256,7 +258,7 @@ $(document).ready(function(){
             
             $(this)[tog2(this.value)]('y');
         }).on('mousemove', '.y', function( e ){
-            $(this)[tog2(this.offsetWidth-60 < e.clientX-this.getBoundingClientRect().left)]('onY');    
+            $(this)[tog2(this.offsetWidth-80 < e.clientX-this.getBoundingClientRect().left)]('onY');    
         }).on('touchstart click', '.onY', function( ev ){
             var text = $('#messageInput').val();
             var name = $('#nameInput').val();
